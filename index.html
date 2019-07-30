@@ -27,7 +27,8 @@
 
   var gifButtons = ["The Matrix", "The Notebook", "Mr. Nobody", "The Lion King"];
   var apiKey = '?api_key=dc6zaTOxFJmzC';
-  var apiURL = `api.giphy.com/v1/gifs/search${apiKey}&1=apple&limit=10&rating=g`;
+  var search = 'apple'
+  var apiURL = `api.giphy.com/v1/gifs/search${apiKey}&q=${search}&limit=10&rating=g`;
   var q
 
 
@@ -37,7 +38,8 @@
     for (i=0; i < gifButtons.length; i++){
       var b = $('<button>');
       b.text(gifButtons[i]);
-      b.attr('class', 'gifButton btn btn-info btn-sm');
+      b.attr('class', 'btn btn-info btn-sm');
+      b.attr('id', 'gifButton');
       $('#buttons').append(b);
     }
     $('#addButton').on('click', function(){
@@ -53,7 +55,9 @@
     $('#gifSearch').val("");
   });
 
-  $('.gifButton').on('click',function(){
+  $(document).on('click', '#gifButton', function(){
+    search = $('#gifButton').val();
+    debugger;
     $.ajax({
       url: apiURL,
       method: 'GET'
