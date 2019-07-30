@@ -6,11 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <title>Giphy Meme's</title>
+    <style type="text/css">
+      .jumbotron{
+        background-image: url("https://media.giphy.com/media/26BRBupa6nRXMGBP2/source.gif");
+        background-size: 100%;
+        
+
+      }
+    </style>
 </head>
 <body>
   <h1 class="jumbotron">Giphy Meme's!</h1>
 <!-- Buttons load here -->
   <div id="buttons"></div>
+  <br>
 <!-- Here users can type and add a new button. -->
   <form class="form-group" id="gifSearchForm">
     <label for="gifSearch">Search for a new meme</label>
@@ -20,6 +29,7 @@
 
     <input class="btn btn-success" id="addButton" type="submit" value="Add a meme!">
   </form>
+
 <!-- Gif's load here -->
   <div id="gifBox"></div>
 

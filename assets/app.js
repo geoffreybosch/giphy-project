@@ -1,5 +1,5 @@
 
-  var gifButtons = ["Shook", "Doge", "Salt Bae", "Aurthur Fist"];
+  var gifButtons = ["Shook", "Doge", "Salt Bae", "Arthur Fist"];
   var apiKey = '?api_key=UPVjVwevOqPChTS9FFJ6lm8GhpmtVLPm';
   var search;
   var apiURL = `https://api.giphy.com/v1/gifs/search${apiKey}&q=${search}&limit=10&rating=g`;
@@ -28,10 +28,10 @@
     renderButtons();
     $('#gifSearch').val("");
   });
-//This is used to cycle push 10 gifs into the gidBox div
+//This is used to cycle push 10 gifs into the gifBox div
   $(document).on('click', '#gifButton', function(){
     search = $(this).text();
-    apiURL = `https://api.giphy.com/v1/gifs/search${apiKey}&q=${search}&limit=10&rating=pg13`;
+    apiURL = `https://api.giphy.com/v1/gifs/search${apiKey}&q=${search}&limit=10&rating=pg13&lang=en`;
     $.ajax({
       url: apiURL,
       method: 'GET'
@@ -39,23 +39,26 @@
       console.log(response);
       $('#gifBox').html('');
         for (var i=0; i<10; i++){
-          //<a> tag was added to toubleshoot a later step
-          var a = $('<a>');
-          var img = $('<img>');
-          a.attr('class','loadedGIF');
-          a.html(img);
-          
-          img.attr('class',i)
-          img.attr('src',response.data[i].images.fixed_width_still.url);
-          
-          
-          $('#gifBox').append(a);
+            //<a> tag was added to toubleshoot a later step
+            var gifDiv = $('<span>');
+            var img = $('<img>');
+            gifDiv.attr('class','loadedGIF');
+            gifDiv.html(img);
+            gifDiv.append("<br>")
+            gifDiv.append("The above GIF is rated: ")
+            gifDiv.append(response.data[i].rating);
+            gifDiv.append("<br>")
+            img.attr('class',i)
+            img.attr('src',response.data[i].images.fixed_width_still.url);
+            
+            $('#gifBox').append(gifDiv);
         }
+        $('#gifBox').prepend(`<p>If you want to see these gif's in motion, search them on <a href='http://www.giphy.com/search/${search}'>GIPHY</a>, as I couldn't figure that out without them all being animated:)</p>"`)
     })
   })
 //Here I tried to set a click event to one of the loaded gifs, but couldn't get a console log to work. I tried incasing each gif in an <a> tag but that didn't work either. Was just a shot in the dark.
 
-  //First Attempt
+  //First Attempt, tried to write as much code as possible even though it wasn't working.
 $(document).on('click','#loadedGIF',function(){
     console.log('Hi!');
     $.ajax({
@@ -64,14 +67,14 @@ $(document).on('click','#loadedGIF',function(){
     }).then(function(response){
         this.attr('class','loadedGIF');
         var i = this
-        a.html(img);
-        img.attr('src',response.data.images.downsized_large.url);
+        gifDiv.html(img);
+        img.attr('src',response.data[i].images.downsized_large.url);
         
         
-        $('#gifBox').append(a)
+        $('#gifBox').append(gifDiv)
     })
 })
-//Second Attempt
+//Second Attempt, stopped after console log woulldn't work.
 // $(document).ready(function () {
 //     $('#loadedGIF').click(function () {
 //         alert($(this).attr('src'));
