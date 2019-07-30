@@ -9,65 +9,22 @@
 </head>
 <body>
   <h1 class="jumbotron">Giphy Meme's!</h1>
+<!-- Buttons load here -->
   <div id="buttons"></div>
+<!-- Here users can type and add a new button. -->
   <form class="form-group" id="gifSearchForm">
     <label for="gifSearch">Search for a new meme</label>
     <input class="form-control" type="text" id="gifSearch">
     <br>
 
 
-    <input class="btn btn-success" id="addButton" type="submit" value="Add a Movie, Yo!">
+    <input class="btn btn-success" id="addButton" type="submit" value="Add a meme!">
   </form>
-
+<!-- Gif's load here -->
   <div id="gifBox"></div>
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script type="text/javascript">
-
-  var gifButtons = ["The Matrix", "The Notebook", "Mr. Nobody", "The Lion King"];
-  var apiKey = '?api_key=UPVjVwevOqPChTS9FFJ6lm8GhpmtVLPm';
-  var search = 'apple'
-  var apiURL = `https://api.giphy.com/v1/gifs/search${apiKey}&q=${search}&limit=10&rating=g`;
-  var q
-
-
-  
-  function renderButtons() {
-    $('#buttons').html("");
-    for (i=0; i < gifButtons.length; i++){
-      var b = $('<button>');
-      b.text(gifButtons[i]);
-      b.attr('class', 'btn btn-info btn-sm');
-      b.attr('id', 'gifButton');
-      $('#buttons').append(b);
-    }
-    $('#addButton').on('click', function(){
-      var newGif = $('#gifSearch').val();
-    })
-  }
-  $("#addButton").on("click", function(event) {
-    event.preventDefault();
-
-    var newGif = $('#gifSearch').val();
-    gifButtons.push(newGif);
-    renderButtons();
-    $('#gifSearch').val("");
-  });
-
-  $(document).on('click', '#gifButton', function(){
-    search = $('#gifButton').val();
-
-    $.ajax({
-      url: apiURL,
-      method: 'GET'
-    }).then(function(response){
-      console.log(response)
-    })
-  })
-  renderButtons()
-
-
-</script>
+<script type="text/javascript" src="assets/app.js"></script>
 </body>
 </html>
