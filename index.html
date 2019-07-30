@@ -28,7 +28,7 @@
   var gifButtons = ["The Matrix", "The Notebook", "Mr. Nobody", "The Lion King"];
   var apiKey = '?api_key=UPVjVwevOqPChTS9FFJ6lm8GhpmtVLPm';
   var search = 'apple'
-  var apiURL = `api.giphy.com/v1/gifs/search${apiKey}&q=${search}&limit=10&rating=g`;
+  var apiURL = `https://api.giphy.com/v1/gifs/search${apiKey}&q=${search}&limit=10&rating=g`;
   var q
 
 
@@ -57,7 +57,7 @@
 
   $(document).on('click', '#gifButton', function(){
     search = $('#gifButton').val();
-    debugger;
+
     $.ajax({
       url: apiURL,
       method: 'GET'
