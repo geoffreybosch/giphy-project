@@ -10,28 +10,27 @@
       .jumbotron{
         background-image: url("https://media.giphy.com/media/26BRBupa6nRXMGBP2/source.gif");
         background-size: 100%;
-        
-
       }
     </style>
 </head>
 <body>
   <h1 class="jumbotron">Giphy Meme's!</h1>
-<!-- Buttons load here -->
-  <div id="buttons"></div>
-  <br>
-<!-- Here users can type and add a new button. -->
-  <form class="form-group" id="gifSearchForm">
-    <label for="gifSearch">Search for a new meme</label>
-    <input class="form-control" type="text" id="gifSearch">
+  <div class="container">
+    <!-- Buttons load here -->
+    <div id="buttons"></div>
     <br>
+    <!-- Here users can type and add a new button. -->
+    <form class="form-group" id="gifSearchForm">
+      <label for="gifSearch">Search for a new meme</label>
+      <input class="form-control" type="text" id="gifSearch">
+      <br>
 
 
-    <input class="btn btn-success" id="addButton" type="submit" value="Add a meme!">
-  </form>
-
+      <input class="btn btn-success" id="addButton" type="submit" value="Add a meme!">
+    </form>
+  </div>
 <!-- Gif's load here -->
-  <div id="gifBox"></div>
+  <div class="container" id="gifBox"></div>
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

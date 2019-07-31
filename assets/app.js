@@ -43,17 +43,18 @@
             var gifDiv = $('<span>');
             var img = $('<img>');
             gifDiv.attr('class','loadedGIF');
-            gifDiv.html(img);
-            gifDiv.append("<br>")
-            gifDiv.append("The above GIF is rated: ")
+            gifDiv.append(img);
+            gifDiv.append(`<br>`)
+            gifDiv.append(`The above GIF is rated: `)
             gifDiv.append(response.data[i].rating);
-            gifDiv.append("<br>")
+            gifDiv.append(`<br><br>`)
             img.attr('class',i)
+            img.attr('class','shadow-lg rounded')
             img.attr('src',response.data[i].images.fixed_width_still.url);
             
             $('#gifBox').append(gifDiv);
         }
-        $('#gifBox').prepend(`<p>If you want to see these gif's in motion, search them on <a href='http://www.giphy.com/search/${search}'>GIPHY</a>, as I couldn't figure that out without them all being animated:)</p>"`)
+        $('#gifBox').prepend(`<p>If you want to see these gif's in motion, search them on <a href='http://www.giphy.com/search/${search}'>GIPHY</a>, as I couldn't figure that out without them all being animated:)</p>`)
     })
   })
 //Here I tried to set a click event to one of the loaded gifs, but couldn't get a console log to work. I tried incasing each gif in an <a> tag but that didn't work either. Was just a shot in the dark.
